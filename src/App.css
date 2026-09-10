@@ -1,0 +1,644 @@
+/* Base styles for the App */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 7rem 2rem;
+  box-sizing: border-box;
+}
+
+.main-content {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+}
+
+.content-box {
+  background: rgba(18, 10, 32, 0.65);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  padding: 3rem 4rem;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 0, 127, 0.25);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(121, 40, 202, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-align: center;
+  animation: fade-in-scale 0.35s ease-out;
+  width: 100%;
+}
+
+.home-hero-text {
+  text-align: center;
+  width: 100%;
+  animation: fade-in-scale 0.4s ease-out;
+  padding: 1.5rem 1rem;
+}
+
+.home-hero-text h1.hero-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  white-space: nowrap;
+  font-family: 'Londrina Shadow', 'Roboto', cursive, sans-serif;
+  font-size: clamp(3.2rem, 8vw, 6.8rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ffffff 10%, #ff70b0 45%, #ff007f 75%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: 
+    drop-shadow(0 4px 0 rgba(5, 2, 15, 0.98))
+    drop-shadow(0 10px 25px rgba(0, 0, 0, 0.95))
+    drop-shadow(0 0 35px rgba(255, 0, 127, 0.65));
+  margin: 0 0 0.4rem 0;
+  line-height: 1.05;
+}
+
+.hero-word {
+  display: inline-block;
+}
+
+.home-hero-text .subtitle {
+  font-family: 'Roboto', 'Outfit', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  color: #ffffff;
+  letter-spacing: 0.03em;
+  text-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.98),
+    0 4px 14px rgba(0, 0, 0, 0.85),
+    0 0 18px rgba(0, 240, 255, 0.4);
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.home-location-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  background: rgba(12, 6, 24, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  padding: 0.55rem 1.3rem;
+  border-radius: 9999px;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.6),
+    0 0 18px rgba(0, 240, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  animation: fade-in-scale 0.5s ease-out;
+}
+
+.home-location-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 0, 127, 0.5);
+  box-shadow: 
+    0 10px 28px rgba(0, 0, 0, 0.7),
+    0 0 24px rgba(255, 0, 127, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.location-pin-icon {
+  font-size: 1.15rem;
+  filter: drop-shadow(0 0 6px rgba(255, 0, 127, 0.6));
+  animation: retro-pulse 2.5s infinite alternate ease-in-out;
+}
+
+.location-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #00f0ff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.location-address {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 600px) {
+  .home-location-pill {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .location-address {
+    font-size: 0.85rem;
+  }
+}
+
+.badge-pill {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+}
+
+h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #ff007f 0%, #7928ca 50%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 20px rgba(255, 0, 127, 0.3);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.78);
+  margin-top: 1rem;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.content-actions {
+  margin-top: 1.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.retro-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.7rem;
+  background: linear-gradient(135deg, #ff007f 0%, #7928ca 100%);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 18px rgba(255, 0, 127, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.25s ease;
+}
+
+.retro-action-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    0 6px 24px rgba(255, 0, 127, 0.65),
+    0 0 25px rgba(121, 40, 202, 0.45);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.retro-action-btn.secondary-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.2);
+}
+
+.retro-action-btn.secondary-btn:hover {
+  background: rgba(0, 240, 255, 0.18);
+  border-color: #00f0ff;
+  box-shadow: 0 6px 20px rgba(0, 240, 255, 0.4);
+}
+
+.primary-pulse {
+  animation: button-neon-pulse 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes button-neon-pulse {
+  0% { box-shadow: 0 4px 18px rgba(255, 0, 127, 0.45); }
+  100% { box-shadow: 0 4px 26px rgba(255, 0, 127, 0.8), 0 0 20px rgba(0, 240, 255, 0.4); }
+}
+
+.btn-glow-dot {
+  font-size: 1.1rem;
+}
+
+/* ─── Guestbook Feed Styles ──────────────────────────────── */
+.guestbook-content-box {
+  max-width: 820px;
+}
+
+.guestbook-feed {
+  margin-top: 2.2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feed-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #00f0ff;
+}
+
+.feed-count {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-card-item {
+  background: rgba(10, 5, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 1.25rem 1.4rem;
+  transition: all 0.25s ease;
+}
+
+.review-card-item:hover {
+  border-color: rgba(255, 0, 127, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  background: rgba(18, 9, 32, 0.75);
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.reviewer-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.reviewer-avatar {
+  font-size: 1.5rem;
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 0, 127, 0.15);
+  border: 1px solid rgba(255, 0, 127, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reviewer-name {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.review-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.review-stars-badge {
+  color: #fde047;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+}
+
+.review-caption-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.55;
+  margin: 0 0 0.85rem 0;
+  font-style: italic;
+}
+
+.review-attached-img-wrapper {
+  margin-bottom: 0.85rem;
+  border-radius: 12px;
+  overflow: hidden;
+  max-height: 200px;
+  border: 1px solid rgba(255, 0, 127, 0.3);
+}
+
+.review-attached-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.review-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.review-tag-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: rgba(0, 240, 255, 0.1);
+  color: #00f0ff;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+}
+
+/* ─── Client Diary Feed Styles ───────────────────────────── */
+.diary-content-box {
+  max-width: 880px;
+}
+
+.diary-feed {
+  margin-top: 2.2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.diary-entries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .diary-entries-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.polaroid-diary-card {
+  background: rgba(14, 7, 26, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 0, 127, 0.35);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 
+    0 15px 35px -5px rgba(0, 0, 0, 0.75),
+    0 0 25px rgba(255, 0, 127, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.polaroid-diary-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(255, 0, 127, 0.6);
+  box-shadow: 
+    0 20px 45px -5px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(255, 0, 127, 0.3);
+}
+
+/* Washi tape decorative strip */
+.washi-tape-strip {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  z-index: 5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.polaroid-media-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #000;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.polaroid-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.polaroid-diary-card:hover .polaroid-photo-img {
+  transform: scale(1.04);
+}
+
+.polaroid-vibe-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(10, 5, 20, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  color: #00f0ff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.diary-card-body {
+  padding: 1.35rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  flex: 1;
+}
+
+.diary-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.diary-author-info {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.diary-mood-avatar {
+  font-size: 1.4rem;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 0, 127, 0.15);
+  border: 1px solid rgba(255, 0, 127, 0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diary-author-name {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.diary-entry-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+  display: block;
+}
+
+/* Interactive Like Button */
+.diary-like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.diary-like-btn:hover {
+  background: rgba(255, 0, 127, 0.2);
+  border-color: #ff007f;
+  transform: scale(1.08);
+}
+
+.diary-like-btn.liked {
+  background: rgba(255, 0, 127, 0.25);
+  border-color: rgba(255, 0, 127, 0.6);
+  box-shadow: 0 0 12px rgba(255, 0, 127, 0.3);
+}
+
+.heart-icon {
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.diary-like-btn:hover .heart-icon {
+  transform: scale(1.2);
+}
+
+.like-count {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ff85c0;
+}
+
+.diary-story-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.55;
+  margin: 0;
+  font-style: italic;
+}
+
+.diary-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.diary-tag-pill {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: rgba(255, 0, 127, 0.12);
+  color: #ff70b0;
+  border: 1px solid rgba(255, 0, 127, 0.25);
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 5rem 1rem 6rem 1rem;
+  }
+
+  .home-hero-text h1.hero-title {
+    flex-direction: column;
+    gap: 0;
+    white-space: normal;
+    font-size: clamp(3.4rem, 13vw, 5.2rem);
+    line-height: 0.94;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .content-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+}

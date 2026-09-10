@@ -1,0 +1,482 @@
+/* ─── 90s Diary Instructions Modal ───────────────────────── */
+
+.diary-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(5, 2, 15, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: diary-fade-in 0.25s ease-out;
+}
+
+.diary-modal-card {
+  background: rgba(20, 10, 36, 0.92);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 0, 127, 0.4);
+  border-radius: 28px;
+  padding: 2.2rem;
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow:
+    0 25px 60px -10px rgba(0, 0, 0, 0.85),
+    0 0 45px rgba(255, 0, 127, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  animation: diary-scale-up 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Custom scrollbar for modal */
+.diary-modal-card::-webkit-scrollbar {
+  width: 6px;
+}
+.diary-modal-card::-webkit-scrollbar-thumb {
+  background: rgba(255, 0, 127, 0.3);
+  border-radius: 4px;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+.diary-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.diary-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.diary-icon {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 0 12px rgba(255, 0, 127, 0.7));
+}
+
+.diary-badge {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+  margin-bottom: 0.3rem;
+}
+
+.diary-header-title h2 {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ff007f 0%, #a855f7 50%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+.diary-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.diary-close-btn:hover {
+  background: rgba(255, 0, 127, 0.3);
+  border-color: #ff007f;
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 0 12px rgba(255, 0, 127, 0.5);
+}
+
+.diary-modal-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.55;
+  margin: 0 0 1.5rem 0;
+}
+
+/* ─── Step Cards Grid ────────────────────────────────────── */
+.diary-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.step-card {
+  background: rgba(30, 15, 52, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 1.1rem;
+  display: flex;
+  gap: 0.85rem;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 0, 127, 0.4);
+  background: rgba(40, 20, 70, 0.7);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.step-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.step-emoji {
+  font-size: 1.35rem;
+}
+
+.step-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 800;
+  opacity: 0.85;
+}
+
+.pink-glow {
+  background: rgba(255, 0, 127, 0.15);
+  border: 1px solid rgba(255, 0, 127, 0.4);
+  color: #ff007f;
+  box-shadow: 0 0 14px rgba(255, 0, 127, 0.25);
+}
+
+.purple-glow {
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #c084fc;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.25);
+}
+
+.cyan-glow {
+  background: rgba(0, 240, 255, 0.15);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  color: #00f0ff;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+}
+
+.yellow-glow {
+  background: rgba(250, 204, 21, 0.15);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  color: #fde047;
+  box-shadow: 0 0 14px rgba(250, 204, 21, 0.25);
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content h3 {
+  margin: 0 0 0.35rem 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.step-content p {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.45;
+}
+
+.hashtag-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.hashtag-chips span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: rgba(0, 240, 255, 0.1);
+  color: #00f0ff;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+}
+
+.emoji-picker-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.emoji-picker-demo span {
+  padding: 0.1rem 0.25rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  cursor: default;
+  transition: transform 0.2s ease;
+}
+
+.emoji-picker-demo span:hover {
+  transform: scale(1.25);
+}
+
+/* ─── Polaroid Preview Box ───────────────────────────────── */
+.diary-preview-box {
+  background: rgba(10, 5, 20, 0.5);
+  border: 1px dashed rgba(255, 0, 127, 0.3);
+  border-radius: 18px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.preview-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #ff007f;
+  margin-bottom: 0.75rem;
+}
+
+.preview-polaroid {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 0.85rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.polaroid-photo {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(121, 40, 202, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.polaroid-caption {
+  flex: 1;
+}
+
+.caption-text {
+  margin: 0 0 0.3rem 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+}
+
+.caption-tags {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #00f0ff;
+}
+
+/* ─── Footer Action Button ───────────────────────────────── */
+.diary-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.diary-got-it-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.8rem;
+  background: linear-gradient(135deg, #ff007f 0%, #7928ca 100%);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 20px rgba(255, 0, 127, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.25s ease;
+}
+
+.diary-got-it-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    0 6px 25px rgba(255, 0, 127, 0.7),
+    0 0 30px rgba(121, 40, 202, 0.5);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-sparkle {
+  font-size: 1.1rem;
+}
+
+/* ─── Animations ─────────────────────────────────────────── */
+@keyframes diary-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes diary-scale-up {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ─── Responsive Queries ─────────────────────────────────── */
+@media (max-width: 640px) {
+  .diary-modal-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .diary-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .diary-header-title h2 {
+    font-size: 1.3rem;
+  }
+
+  .preview-polaroid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .diary-got-it-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ─── Diary Post Creation Form Styles ───────────────────── */
+.diary-create-card {
+  max-width: 650px;
+}
+
+.diary-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .form-row-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mood-emoji-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  background: rgba(12, 6, 22, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.4rem;
+  border-radius: 14px;
+}
+
+.mood-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.mood-btn:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mood-btn.active {
+  background: rgba(255, 0, 127, 0.3);
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+  transform: scale(1.15);
+}
+
+.diary-success-state {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  animation: diary-fade-in 0.3s ease;
+}
+
+.diary-success-state .success-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  animation: retro-pulse 2s infinite alternate ease-in-out;
+}
+
+.diary-success-state h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  color: #ff007f;
+  text-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+}
+
+.diary-success-state p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
