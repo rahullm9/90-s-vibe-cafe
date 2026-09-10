@@ -8,6 +8,8 @@ import { GuestbookInfoModal, ReviewModal, type GuestbookReview } from './compone
 
 import polaroidCoffeeTape from './assets/images/polaroid-coffee-tape.jpg'
 import polaroidFriendsCafe from './assets/images/polaroid-friends-cafe.jpg'
+import desktopBg from './assets/images/90s-vibe-desktop-screen.png'
+import mobileBg from './assets/images/90s-vibe-mobile-screen.png'
 
 const INITIAL_DIARY_ENTRIES: DiaryEntry[] = [
   {
@@ -312,6 +314,15 @@ function App() {
 
   return (
     <div className="app">
+      {/* ─── Responsive Dynamic Background Layer ────────── */}
+      <div className="retro-bg-container" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 768px), (orientation: portrait)" srcSet={mobileBg} />
+          <img src={desktopBg} alt="90s Vibe Cafe Ambiance" className="retro-bg-img" />
+        </picture>
+        <div className="retro-bg-overlay" />
+      </div>
+
       <Navbar activeId={isLoading ? loadingTab : activeTab} onNavigate={handleNavigate} />
       <main className="main-content">
         {isLoading ? (
