@@ -292,7 +292,7 @@ function App() {
             </p>
             <div className="home-location-pill">
               <span className="location-pin-icon">📍</span>
-              <span className="location-label">Location :</span>
+              <span className="location-label">Location:</span>
               <span className="location-address">Ranchi road, Purulia, 723102</span>
             </div>
           </div>
