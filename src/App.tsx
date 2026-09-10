@@ -299,8 +299,10 @@ function App() {
               Step back into the golden era of synth tunes, analog warmth, and neon dreams.
             </p>
             <div className="home-location-pill">
-              <span className="location-pin-icon">📍</span>
-              <span className="location-label">Location:</span>
+              <div className="location-header-tag">
+                <span className="location-pin-icon">📍</span>
+                <span className="location-label">Location:</span>
+              </div>
               <span className="location-address">Ranchi road, Purulia, 723102</span>
             </div>
           </div>
