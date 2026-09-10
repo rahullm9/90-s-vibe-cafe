@@ -15,26 +15,32 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
   background-color: #0c0618;
   position: relative;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Silky-smooth hardware-accelerated fixed background (replaces jittery background-attachment: fixed) */
+/* ─── Responsive Hardware-Accelerated Fixed Background ────────── */
 body::before {
   content: '';
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   height: 100dvh;
-  background-image: url('./assets/images/90s-vibe.png');
+  background-image: 
+    linear-gradient(rgba(10, 5, 22, 0.35), rgba(10, 5, 22, 0.55)),
+    url('./assets/images/90s-vibe-desktop-screen.png');
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   z-index: -1;
   pointer-events: none;
@@ -43,9 +49,14 @@ body::before {
   will-change: transform;
 }
 
+/* Mobile Screen Responsive Background Switch */
 @media (max-width: 768px) {
   body::before {
-    background-image: url('./assets/images/90s-vibe-mobile.png');
+    background-image: 
+      linear-gradient(rgba(10, 5, 22, 0.35), rgba(10, 5, 22, 0.55)),
+      url('./assets/images/90s-vibe-mobile-screen.png');
+    background-size: cover;
+    background-position: center top;
   }
 }
 
