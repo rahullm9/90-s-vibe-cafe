@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { Navbar } from './components/Navbar'
 import { MusicPlayer } from './components/MusicPlayer'
@@ -56,7 +56,7 @@ const INITIAL_REVIEWS: GuestbookReview[] = [
 function App() {
   const [activeTab, setActiveTab] = useState<string>('home')
   const [loadingTab, setLoadingTab] = useState<string>('home')
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const [isDiaryModalOpen, setIsDiaryModalOpen] = useState<boolean>(false)
   const [isDiaryPostModalOpen, setIsDiaryPostModalOpen] = useState<boolean>(false)
@@ -65,6 +65,14 @@ function App() {
 
   const [diaryEntries, setDiaryEntries] = useState<DiaryEntry[]>(INITIAL_DIARY_ENTRIES)
   const [reviews, setReviews] = useState<GuestbookReview[]>(INITIAL_REVIEWS)
+
+  // Initial 2.5s loader on app boot
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2500)
+    return () => clearTimeout(timer)
+  }, [])
 
   const handleNavigate = (id: string) => {
     if (id === activeTab && !isLoading) return;
@@ -79,7 +87,7 @@ function App() {
       } else if (id === 'guestbook') {
         setIsGuestbookInfoOpen(true);
       }
-    }, 400);
+    }, 2500);
   }
 
   const handleAddDiaryEntry = (newEntry: DiaryEntry) => {
