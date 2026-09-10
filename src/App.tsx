@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { Navbar } from './components/Navbar'
 import { MusicPlayer } from './components/MusicPlayer'
+import { RetroLoader } from './components/RetroLoader'
 import { DiaryModal, DiaryPostModal, type DiaryEntry } from './components/DiaryModal'
 import { GuestbookInfoModal, ReviewModal, type GuestbookReview } from './components/GuestbookModal'
 
@@ -54,6 +55,9 @@ const INITIAL_REVIEWS: GuestbookReview[] = [
 
 function App() {
   const [activeTab, setActiveTab] = useState<string>('home')
+  const [loadingTab, setLoadingTab] = useState<string>('home')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   const [isDiaryModalOpen, setIsDiaryModalOpen] = useState<boolean>(false)
   const [isDiaryPostModalOpen, setIsDiaryPostModalOpen] = useState<boolean>(false)
   const [isGuestbookInfoOpen, setIsGuestbookInfoOpen] = useState<boolean>(false)
@@ -63,12 +67,19 @@ function App() {
   const [reviews, setReviews] = useState<GuestbookReview[]>(INITIAL_REVIEWS)
 
   const handleNavigate = (id: string) => {
-    setActiveTab(id)
-    if (id === 'diary') {
-      setIsDiaryModalOpen(true)
-    } else if (id === 'guestbook') {
-      setIsGuestbookInfoOpen(true)
-    }
+    if (id === activeTab && !isLoading) return;
+    setIsLoading(true);
+    setLoadingTab(id);
+
+    setTimeout(() => {
+      setActiveTab(id);
+      setIsLoading(false);
+      if (id === 'diary') {
+        setIsDiaryModalOpen(true);
+      } else if (id === 'guestbook') {
+        setIsGuestbookInfoOpen(true);
+      }
+    }, 400);
   }
 
   const handleAddDiaryEntry = (newEntry: DiaryEntry) => {
@@ -291,11 +302,15 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar activeId={activeTab} onNavigate={handleNavigate} />
+      <Navbar activeId={isLoading ? loadingTab : activeTab} onNavigate={handleNavigate} />
       <main className="main-content">
-        {renderContent()}
+        {isLoading ? (
+          <RetroLoader sectionName={loadingTab} />
+        ) : (
+          renderContent()
+        )}
       </main>
-      <MusicPlayer visible={activeTab === 'home'} />
+      <MusicPlayer visible={!isLoading && activeTab === 'home'} />
 
       {/* Diary Instructions Modal */}
       <DiaryModal
